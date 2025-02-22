@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صندوق المنزل مع حصانة</title>
+    <title>مشروع مكاتب الخالدية</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
@@ -62,7 +62,7 @@ h1 {
 .header-divider {
     width: 100px;
     height: 4px;
-    background-color: #e74c3c;
+    background-color: #5a7d2a;
     margin: 0 auto 10px;
     border-radius: 2px;
 }
@@ -72,75 +72,21 @@ h1 {
     opacity: 0.9;
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.overview-card {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    padding: 15px;
-    background-color: #000f2e;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.fund-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.info-label {
-    font-weight: 700;
-    color: #555;
-}
-
-.info-value {
-    font-weight: 500;
-    color: #000f2e;
-}
-
-.bullet-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.bullet-list li {
-    position: relative;
-    padding-right: 25px;
-    margin-bottom: 20px;
-}
-
-.bullet-list li:before {
-    content: "•";
-    position: absolute;
-    right: 0;
-    color: #e74c3c;
-    font-weight: bold;
+h2 {
     font-size: 24px;
+    margin: 40px 0 20px;
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: #5a7d2a;
+    margin: 10px auto 0;
 }
 
 .metrics-row {
@@ -176,7 +122,7 @@ h1 {
 }
 
 .card-1::after {
-    background-color: #3498db;
+    background-color: #5a7d2a;
 }
 
 .card-2::after {
@@ -184,11 +130,11 @@ h1 {
 }
 
 .card-3::after {
-    background-color: #2ecc71;
+    background-color: #3498db;
 }
 
 .card-4::after {
-    background-color: #f39c12;
+    background-color: #9b59b6;
 }
 
 .metric-value {
@@ -202,48 +148,83 @@ h1 {
     font-size: 14px;
 }
 
-.section-title {
-    font-size: 24px;
-    margin: 40px 0 20px;
-    color: #000f2e;
-    text-align: center;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background-color: #e74c3c;
-    margin: 10px auto 0;
-}
-
-.visuals-container {
+.dashboard {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
-.map-container {
-    background-color: white;
-    border-radius: 10px;
+.section {
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.map-header {
-    background-color: #000f2e;
+.section-header {
+    background-color: #5a5f27;
     color: white;
     padding: 15px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     text-align: center;
 }
 
-.map-body {
+.section-content {
+    padding: 20px;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.info-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-table td:first-child {
+    font-weight: 600;
+    width: 60%;
+    color: #444;
+}
+
+.info-table td:last-child {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.map-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.map-container {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-header {
+    background-color: #5a5f27;
+    color: white;
     padding: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.map-content {
+    padding: 0;
     height: 300px;
     position: relative;
 }
@@ -252,97 +233,68 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 5px;
 }
 
-.chart-container {
-    background-color: white;
-    border-radius: 10px;
+.progress-container {
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-.chart-header {
-    background-color: #000f2e;
-    color: white;
-    padding: 15px;
+.progress-title {
     font-size: 18px;
     font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
     text-align: center;
 }
 
-.chart-body {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.progress-bar-container {
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
-.donut-chart {
-    position: relative;
-    width: 180px;
-    height: 180px;
-    margin: 0 auto 20px;
-}
-
-.donut {
-    width: 100%;
+.progress-bar {
     height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(
-        #3498db 0% 25%,
-        #e74c3c 25% 50%,
-        #bdc3c7 50% 75%,
-        #9b59b6 75% 100%
-    );
+    background: linear-gradient(90deg, #5a7d2a, #3a5d0a);
+    border-radius: 15px;
     position: relative;
+    width: 8%;
 }
 
-.donut-hole {
+.progress-label {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
-    background-color: white;
-    border-radius: 50%;
-}
-
-.chart-legend {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    color: white;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     width: 100%;
+    text-align: center;
 }
 
-.legend-item {
+.progress-info {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    color: #666;
     font-size: 14px;
 }
 
-.legend-color {
-    width: 15px;
-    height: 15px;
-    border-radius: 3px;
-    margin-left: 8px;
-}
-
-.projects-table-container {
-    background-color: white;
-    border-radius: 10px;
+.roads-container {
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.table-header {
-    background-color: #000f2e;
+.roads-header {
+    background-color: #5a5f27;
     color: white;
     padding: 15px;
     font-size: 20px;
@@ -350,66 +302,43 @@ h1 {
     text-align: center;
 }
 
-.table-wrapper {
+.roads-content {
     padding: 20px;
-    overflow-x: auto;
 }
 
-.projects-table {
-    width: 100%;
-    border-collapse: collapse;
+.roads-list {
+    list-style-type: none;
+    padding: 0;
 }
 
-.projects-table th {
-    background-color: #f5f7fa;
-    color: #000f2e;
-    padding: 12px 15px;
-    text-align: center;
-    font-weight: 700;
-    border-bottom: 2px solid #e0e0e0;
+.roads-list li {
+    position: relative;
+    padding-right: 25px;
+    margin-bottom: 12px;
 }
 
-.projects-table td {
-    padding: 12px 15px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
-.projects-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.projects-table tr:hover {
-    background-color: #f0f4f8;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.acquired {
-    background-color: #d4f8e8;
-    color: #1b7d5d;
-}
-
-.pending {
-    background-color: #ffefd5;
-    color: #b35f00;
+.roads-list li:before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: #5a7d2a;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .timeline-container {
-    background-color: white;
-    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.timeline-section {
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-header {
-    background-color: #000f2e;
+    background-color: #5a5f27;
     color: white;
     padding: 15px;
     font-size: 20px;
@@ -417,7 +346,7 @@ h1 {
     text-align: center;
 }
 
-.timeline-body {
+.timeline-content {
     padding: 20px;
 }
 
@@ -457,32 +386,28 @@ h1 {
 .footer {
     text-align: center;
     margin-top: 50px;
+    padding: 20px 0;
     color: #777;
     font-size: 14px;
-    padding: 20px 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e0e0e0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .dashboard {
         grid-template-columns: 1fr;
     }
     
-    .metrics-row {
-        grid-template-columns: 1fr 1fr;
+    .map-section {
+        grid-template-columns: 1fr;
     }
     
-    .visuals-container {
-        grid-template-columns: 1fr;
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 576px) {
     .metrics-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .fund-info {
         grid-template-columns: 1fr;
     }
 }
@@ -493,222 +418,202 @@ h1 {
         <header>
             <div class="header-bg"></div>
             <div class="header-content">
-                <h1>صندوق المنزل مع حصانة</h1>
+                <h1>مشروع مكاتب الخالدية</h1>
                 <div class="header-divider"></div>
-                <div class="header-subtitle">جدوى المالية مديرًا للصندوق</div>
+                <div class="header-subtitle">حي الخالدية، الرياض</div>
             </div>
         </header>
         
         <div class="metrics-row">
             <div class="metric-card card-1">
-                <div class="metric-label">حجم الصندوق</div>
-                <div class="metric-value">3,000</div>
+                <div class="metric-label">تكلفة الاستحواذ</div>
+                <div class="metric-value">146</div>
                 <div class="metric-label">مليون ريال سعودي</div>
             </div>
             
             <div class="metric-card card-2">
-                <div class="metric-label">رأس المال الملتزم به</div>
-                <div class="metric-value">1,500</div>
+                <div class="metric-label">تكلفة التطوير</div>
+                <div class="metric-value">253</div>
                 <div class="metric-label">مليون ريال سعودي</div>
             </div>
             
             <div class="metric-card card-3">
-                <div class="metric-label">التسهيلات الممنوحة</div>
-                <div class="metric-value">1,500</div>
+                <div class="metric-label">صافي الدخل التشغيلي</div>
+                <div class="metric-value">25</div>
                 <div class="metric-label">مليون ريال سعودي</div>
             </div>
             
             <div class="metric-card card-4">
-                <div class="metric-label">التسهيلات المستخدمة</div>
-                <div class="metric-value">100</div>
+                <div class="metric-label">قيمة البيع عند التخارج</div>
+                <div class="metric-value">317</div>
                 <div class="metric-label">مليون ريال سعودي</div>
             </div>
         </div>
         
+        <h2>تفاصيل المشروع</h2>
+        
         <div class="dashboard">
-            <div class="overview-card">
-                <div class="card-header">نظرة عامة على الصندوق</div>
-                <div class="card-body">
-                    <div class="fund-info">
-                        <div class="info-row">
-                            <div class="info-label">نوع الصندوق:</div>
-                            <div class="info-value">صندوق عقاري خاص مغلق</div>
-                        </div>
-                        
-                        <div class="info-row">
-                            <div class="info-label">رأس المال الحالي:</div>
-                            <div class="info-value">500 مليون ريال</div>
-                        </div>
-                        
-                        <div class="info-row">
-                            <div class="info-label">تاريخ الإنشاء:</div>
-                            <div class="info-value">فبراير 2024</div>
-                        </div>
-                        
-                        <div class="info-row">
-                            <div class="info-label">مدة الصندوق:</div>
-                            <div class="info-value">5 سنوات 1+1</div>
-                        </div>
-                        
-                        <div class="info-row">
-                            <div class="info-label">شريك الاستراتيجي:</div>
-                            <div class="info-value">شركة دار الماجد العقارية</div>
-                        </div>
-                    </div>
+            <div class="section">
+                <div class="section-header">تفاصيل العقار</div>
+                <div class="section-content">
+                    <table class="info-table">
+                        <tr>
+                            <td>الموقع</td>
+                            <td>حي الخالدية، الرياض</td>
+                        </tr>
+                        <tr>
+                            <td>مساحة الأرض</td>
+                            <td>15,137 متر مربع</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي مسطحات البناء المتوقعة</td>
+                            <td>15,137 متر مربع</td>
+                        </tr>
+                        <tr>
+                            <td>صافي المساحة التأجيرية</td>
+                            <td>14,532 متر مربع</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي مساحة القبو</td>
+                            <td>30,000 متر مربع</td>
+                        </tr>
+                        <tr>
+                            <td>حالة الأرض</td>
+                            <td>ارض مطورة / تجارية</td>
+                        </tr>
+                        <tr>
+                            <td>نسبة الإنجاز</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td>تاريخ اكتمال المشروع</td>
+                            <td>يونيو 2026</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             
-            <div class="overview-card">
-                <div class="card-header">الصندوق والتحديث المالي</div>
-                <div class="card-body">
-                    <ul class="bullet-list">
-                        <li>تم اطلاق الصندوق في فبراير 2024، بالشراكة مع شركة حصانة للاستثمار ودار الماجد العقارية ("الشركاء" أو "المستثمرين")، بغرض الاستحواذ على عدة مشاريع تطوير سكنية في جميع مدن المملكة.</li>
-                        <li>تم جمع التزامات مالية بكامل رأس مال الصندوق المستهدف بمبلغ إجمالي 1,500 مليون ريال وتم الحصول على تسهيلات ائتمانية بمبلغ 1,500 مليون ريال.</li>
-                        <li>تم تقديم 5 مشاريع لمجلس إدارة الصندوق وتم الحصول على الموافقات اللازمة، وتم اتمام الاستحواذ على 3 من المشاريع.</li>
+            <div class="section">
+                <div class="section-header">التفاصيل المالية</div>
+                <div class="section-content">
+                    <table class="info-table">
+                        <tr>
+                            <td>تكلفة الاستحواذ (للمتر المربع)</td>
+                            <td>9,000 ريال</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي تكلفة الاستحواذ</td>
+                            <td>146 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>آخر تقييم للأرض</td>
+                            <td>180.5 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي تكلفة الإنشاء</td>
+                            <td>107 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي تكلفة التطوير</td>
+                            <td>253 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>صافي الدخل التشغيلي</td>
+                            <td>25 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>اجمالي قيمة البيع عند التخارج</td>
+                            <td>317 مليون ريال</td>
+                        </tr>
+                        <tr>
+                            <td>معدل الرسملة المفترض</td>
+                            <td>8.00%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-title">حالة تقدم المشروع</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="progress-label">8%</div>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div>بدء المشروع</div>
+                <div>الإنجاز الحالي: 8%</div>
+                <div>اكتمال المشروع: يونيو 2026</div>
+            </div>
+        </div>
+        
+        <h2>موقع المشروع</h2>
+        
+        <div class="map-section">
+            <div class="map-container">
+                <div class="map-header">خريطة الموقع</div>
+                <div class="map-content">
+                    <img src="/api/placeholder/1200/400" alt="خريطة موقع المشروع" class="map-image">
+                </div>
+            </div>
+            
+            <div class="roads-container">
+                <div class="roads-header">الطرق الرئيسية القريبة</div>
+                <div class="roads-content">
+                    <ul class="roads-list">
+                        <li>طريق الملك فهد</li>
+                        <li>طريق الملك خالد</li>
+                        <li>طريق الدائري الشمالي</li>
+                        <li>طريق أنس بن مالك</li>
+                        <li>طريق الامام سعود بن فيصل</li>
+                        <li>طريق الأمير محمد بن سلمان</li>
                     </ul>
                 </div>
             </div>
         </div>
         
-        <h2 class="section-title">مواقع المشاريع والتوزيع</h2>
-        
-        <div class="visuals-container">
-            <div class="map-container">
-                <div class="map-header">مواقع المشاريع في الرياض</div>
-                <div class="map-body">
-                    <img src="/api/placeholder/800/300" alt="خريطة المشاريع" class="map-image">
-                </div>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">المحفظة حسب المشروع</div>
-                <div class="chart-body">
-                    <div class="donut-chart">
-                        <div class="donut"></div>
-                        <div class="donut-hole"></div>
-                    </div>
-                    <div class="chart-legend">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #3498db;"></div>
-                            <span>حطين</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #e74c3c;"></div>
-                            <span>العليا</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #bdc3c7;"></div>
-                            <span>الخير</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #9b59b6;"></div>
-                            <span>الربيع</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <h2 class="section-title">محفظة المشاريع</h2>
-        
-        <div class="projects-table-container">
-            <div class="table-header">تفاصيل المشاريع</div>
-            <div class="table-wrapper">
-                <table class="projects-table">
-                    <thead>
-                        <tr>
-                            <th>المشروع</th>
-                            <th>الموقع</th>
-                            <th>الاستخدام</th>
-                            <th>مساحة الأرض</th>
-                            <th>اجمالي مساحة البناء</th>
-                            <th>الوضع الراهن</th>
-                            <th>تاريخ التسليم المتوقع</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>حطين</strong></td>
-                            <td>حي حطين، الرياض</td>
-                            <td>فلل/تاونهاوس</td>
-                            <td>14,712.6 متر مربع</td>
-                            <td>18,391 متر مربع</td>
-                            <td><span class="status-badge acquired">تم الاستحواذ</span></td>
-                            <td>الربع الرابع 2026</td>
-                        </tr>
-                        <tr>
-                            <td><strong>العليا</strong></td>
-                            <td>حي الملك فهد، الرياض</td>
-                            <td>برج سكني</td>
-                            <td>3,250 متر مربع</td>
-                            <td>18,200 متر مربع</td>
-                            <td><span class="status-badge acquired">تم الاستحواذ</span></td>
-                            <td>الربع الثاني 2028</td>
-                        </tr>
-                        <tr>
-                            <td><strong>الخير</strong></td>
-                            <td>حي العقيق، الرياض</td>
-                            <td>شقق سكنية</td>
-                            <td>12,000 متر مربع</td>
-                            <td>22,239 متر مربع</td>
-                            <td><span class="status-badge pending">لم يتم الاستحواذ بعد</span></td>
-                            <td>الربع الرابع 2026</td>
-                        </tr>
-                        <tr>
-                            <td><strong>الربيع</strong></td>
-                            <td>حي الربيع، الرياض</td>
-                            <td>شقق سكنية</td>
-                            <td>7,279 متر مربع</td>
-                            <td>14,558 متر مربع</td>
-                            <td><span class="status-badge acquired">تم الاستحواذ</span></td>
-                            <td>الربع الرابع 2026</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <h2 class="section-title">الجدول الزمني للمشاريع</h2>
+        <h2>الجدول الزمني للمشروع</h2>
         
         <div class="timeline-container">
-            <div class="timeline-header">الإطار الزمني للتطوير والتسليم</div>
-            <div class="timeline-body">
-                <div class="years-row">
-                    <div class="year-label">2024</div>
-                    <div class="year-label">2025</div>
-                    <div class="year-label">2026</div>
-                    <div class="year-label">2027</div>
-                    <div class="year-label">2028</div>
-                </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-progress" style="left: 0; width: 60%; background-color: #3498db;">
-                        حطين
+            <div class="timeline-section">
+                <div class="timeline-header">مراحل تنفيذ المشروع</div>
+                <div class="timeline-content">
+                    <div class="years-row">
+                        <div class="year-label">2026</div>
+                        <div class="year-label">2025</div>
+                        <div class="year-label">2024</div>
                     </div>
-                </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-progress" style="left: 20%; width: 80%; background-color: #e74c3c;">
-                        العليا
+                    
+                    <div class="timeline-track">
+                        <div class="timeline-progress" style="left: 0; width: 20%; background-color: #5a7d2a;">
+                            استحواذ على الأرض
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-progress" style="left: 20%; width: 60%; background-color: #bdc3c7;">
-                        الخير
+                    
+                    <div class="timeline-track">
+                        <div class="timeline-progress" style="left: 20%; width: 30%; background-color: #e74c3c;">
+                            بدء أعمال الحفر
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-track">
-                    <div class="timeline-progress" style="left: 15%; width: 55%; background-color: #9b59b6;">
-                        الربيع
+                    
+                    <div class="timeline-track">
+                        <div class="timeline-progress" style="left: 50%; width: 30%; background-color: #3498db;">
+                            اكتمال الهيكل الإنشائي
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-track">
+                        <div class="timeline-progress" style="left: 80%; width: 20%; background-color: #9b59b6;">
+                            اكتمال المشروع
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            صندوق المنزل مع حصانة | جدوى المالية مديرًا للصندوق | 2024
+            مشروع مكاتب الخالدية © 2024 | جميع الحقوق محفوظة
         </div>
     </div>
 </body>
