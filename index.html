@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استراتيجية تجربة العميل</title>
+    <title>صندوق المنزل مع حصانة</title>
     <link rel="stylesheet" href="styles.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
 
 * {
     margin: 0;
@@ -33,359 +33,603 @@ header {
     align-items: center;
     padding: 10px 0;
     margin-bottom: 30px;
-    border-bottom: 2px solid #c0b283;
+    border-bottom: 2px solid #5a7d2a;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: #373737;
+    color: #2c3e50;
 }
 
 .header-img {
     width: 80px;
     height: 40px;
-    background-color: #dfd5a5;
+    background-image: linear-gradient(to bottom, #83b9e4, #5a7d2a);
     border-radius: 4px;
 }
 
 h1 {
-    font-size: 36px;
-    text-align: center;
+    font-size: 28px;
     margin-bottom: 30px;
-    color: #373737;
+    color: #2c3e50;
+    text-align: center;
 }
 
-.intro {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: justify;
+h2 {
+    font-size: 24px;
+    margin: 40px 0 20px;
+    color: #2c3e50;
+    text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
-.intro::after {
+h2:after {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/api/placeholder/200/200') no-repeat;
-    background-position: left;
-    background-size: contain;
-    opacity: 0.2;
-    z-index: 0;
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: #5a7d2a;
+    margin: 10px auto 0;
 }
 
-.intro-content {
-    position: relative;
-    z-index: 1;
-}
-
-.sections {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
+.fund-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .section {
-    flex: 1;
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin-bottom: 30px;
 }
 
-.section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #373737;
-    border-bottom: 2px solid #c0b283;
-    padding-bottom: 10px;
-}
-
-.progress-items, .next-steps-items {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.item {
-    background-color: #f8f8f8;
-    border-radius: 8px;
+.section-header {
+    background-color: #5a5f27;
+    color: white;
     padding: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
     text-align: center;
 }
 
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+.section-content {
+    padding: 20px;
 }
 
-.item-icon {
-    width: 60px;
-    height: 60px;
-    background-color: #c0b283;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.fund-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info-label {
+    font-weight: 700;
+    text-align: left;
+}
+
+.info-value {
+    text-align: right;
+}
+
+.bullet-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    position: relative;
+    padding-right: 25px;
     margin-bottom: 15px;
 }
 
-.item-content {
-    font-size: 14px;
+.bullet-list li:before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: #5a7d2a;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.footnote {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
+.visual-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.modal {
-    display: none;
-    position: fixed;
+.map-wrapper {
+    position: relative;
+    height: 300px;
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.map-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.modal-title {
-    margin-bottom: 20px;
-    color: #373737;
-    text-align: center;
-    border-bottom: 2px solid #c0b283;
-    padding-bottom: 10px;
-}
-
-.modal-desc {
-    text-align: justify;
-}
-
-.timeline {
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    padding: 20px;
-    position: relative;
 }
 
-.timeline-circle {
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.donut-chart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #3498db 0% 30%,
+        #e74c3c 30% 55%,
+        #bdc3c7 55% 70%,
+        #9b59b6 70% 100%
+    );
+    margin-bottom: 20px;
+}
+
+.donut-hole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
-    background-color: #c0b283;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-    position: relative;
-    margin: 0 20px;
-    z-index: 2;
+    background-color: white;
 }
 
-.timeline::before {
+.chart-legend {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-left: 8px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.projects-table th, .projects-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.projects-table th {
+    background-color: #5a5f27;
+    color: white;
+    font-weight: 700;
+}
+
+.projects-table tr:nth-child(odd) {
+    background-color: #e7ecf0;
+}
+
+.projects-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.status-acquired {
+    background-color: #27ae60;
+    color: white;
+}
+
+.status-pending {
+    background-color: #e67e22;
+    color: white;
+}
+
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.financial-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px; 
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    text-align: center; 
+    margin: 10px; 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    min-width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-value {
+    font-size: 36px; 
+    font-weight: 700;
+}
+
+.stat-unit {
+    font-size: 18px; 
+    color: #666;
+}
+
+.stat-label {
+    font-size: 16px; 
+    margin-top: 5px;
+}
+
+.timeline-container {
+    margin-bottom: 30px; 
+    overflow-x: auto;
+}
+
+.timeline-header {
+    display: flex; 
+    min-width: 600px; 
+    margin-bottom: 10px;
+}
+
+.timeline-year {
+    flex: 1; 
+    text-align: center; 
+    font-weight: 700;
+}
+
+.timeline-bar {
+    height: 30px; 
+    position: relative; 
+    background-color: #f5f5f5; 
+    margin-bottom: 15px; 
+    border-radius: 4px; 
+    min-width: 600px;
+}
+
+.timeline-progress {
+    position: absolute; 
+    top: 0; 
+    height: 100%; 
+    border-radius: 4px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-weight: 700;
+}
+
+.divider {
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 40px 0;
+    position: relative;
+}
+
+.divider:after {
     content: '';
     position: absolute;
-    height: 5px;
-    background-color: #c0b283;
-    width: 80%;
-    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 30px;
+    background-color: #f5f5f5;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 700;
+    border-radius: 15px;
 }
 
 @media (max-width: 768px) {
-    .sections {
-        flex-direction: column;
+    .fund-overview {
+        grid-template-columns: 1fr;
     }
     
-    .progress-items, .next-steps-items {
+    .visual-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .fund-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-legend {
         grid-template-columns: 1fr;
     }
 }
-  </style>
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">مكتب إدارة المشاريع والاستراتيجية</div>
+            <div class="logo">إدارة التطوير والاستثمار</div>
             <div class="header-img"></div>
         </header>
         
-        <h1>استراتيجية تجربة العميل</h1>
+        <h1>صندوق المنزل مع حصانة (جدوى المالية مديرًا للصندوق)</h1>
         
-        <div class="intro">
-            <div class="intro-content">
-                <p>تماشيًا مع رؤية الشركة لتعزيز تجربة العميل وتحقيق مستويات أعلى من رضا العملاء، تم توجيه العمل على إعداد استراتيجية متكاملة لتجربة العميل كجزء من التحول الاستراتيجي للشركة. تهدف هذه المبادرة إلى تطوير رحلة العميل، تعزيز الحوكمة، وتوظيف الأدوات التقنية لقياس الأداء وتحسين جودة الخدمات المقدمة.</p>
-            </div>
-        </div>
-        
-        <div class="sections">
+        <!-- Fund Overview Section -->
+        <h2>نظرة عامة على الصندوق</h2>
+        <div class="fund-overview">
             <div class="section">
-                <h2>أبرز التقدمات الحالية</h2>
-                <div class="progress-items">
-                    <div class="item" onclick="openModal('تم اعتماد توجه استراتيجي', 'تم اعتماد توجه استراتيجي لتطوير تجربة العميل كمبادرة ذات أولوية في الشركة.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>التوجيه الاستراتيجي</strong>
-                            <p>تم اعتماد توجه استراتيجي لتطوير تجربة العميل كمبادرة ذات أولوية في الشركة</p>
-                        </div>
-                    </div>
-                    
-                    <div class="item" onclick="openModal('التواصل مع جمعية تجربة العميل', 'تم التواصل مع جمعية تجربة العميل لتعزيز العرض الفني وعكس أفضل الممارسات.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>التواصل مع مقدمي الخدمة</strong>
-                            <p>تم التواصل مع جمعية تجربة العميل لتعزيز العرض الفني وعكس أفضل الممارسات</p>
-                        </div>
-                    </div>
-                    
-                    <div class="item" onclick="openModal('تقديم العرض الفني', 'تم تقديم العرض الفني وجاري مراجعته من قبل الإدارات المعنية.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>مراجعة العرض الفني</strong>
-                            <p>تم تقديم العرض الفني وجاري مراجعته من قبل الإدارات المعنية</p>
-                        </div>
-                    </div>
-                    
-                    <div class="item" onclick="openModal('العمل على التفاوض', 'جارٍ العمل على التفاوض مع مزودي الخدمات لتقديم العروض الفنية والمالية الخاصة بتنفيذ المبادرة.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>التواصل مع مزودي الخدمات</strong>
-                            <p>جارٍ العمل على التفاوض مع مزودي الخدمات لتقديم العروض الفنية والمالية الخاصة بتنفيذ المبادرة</p>
-                        </div>
+                <div class="section-header">معلومات الصندوق</div>
+                <div class="section-content">
+                    <div class="fund-info">
+                        <div class="info-label">نوع الصندوق:</div>
+                        <div class="info-value">صندوق عقاري خاص مغلق</div>
+                        
+                        <div class="info-label">حجم الصندوق:</div>
+                        <div class="info-value">3000 مليون ريال سعودي</div>
+                        
+                        <div class="info-label">رأس المال الملتزم به:</div>
+                        <div class="info-value">1,500 مليون ريال سعودي</div>
+                        
+                        <div class="info-label">رأس المال الحالي:</div>
+                        <div class="info-value">500 مليون ريال</div>
+                        
+                        <div class="info-label">التسهيلات الممنوحة:</div>
+                        <div class="info-value">1,500 مليون ريال سعودي</div>
+                        
+                        <div class="info-label">التسهيلات المستخدمة:</div>
+                        <div class="info-value">100 مليون ريال سعودي</div>
+                        
+                        <div class="info-label">تاريخ الإنشاء:</div>
+                        <div class="info-value">فبراير 2024</div>
+                        
+                        <div class="info-label">مدة الصندوق:</div>
+                        <div class="info-value">5 سنوات 1+1</div>
+                        
+                        <div class="info-label">شريك الاستراتيجي:</div>
+                        <div class="info-value">شركة دار الماجد العقارية</div>
                     </div>
                 </div>
             </div>
             
             <div class="section">
-                <h2>الخطوات القادمة</h2>
-                <div class="next-steps-items">
-                    <div class="item" onclick="openModal('استكمال دراسة العروض', 'استكمال دراسة العروض الفنية والمالية بنهاية شهر فبراير 2025 وذلك لاختيار مزود الخدمة المناسب.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>استكمال الدراسة</strong>
-                            <p>استكمال دراسة العروض الفنية والمالية بنهاية شهر فبراير 2025 لاختيار مزود الخدمة المناسب</p>
-                        </div>
+                <div class="section-header">الصندوق والتحديث المالي</div>
+                <div class="section-content">
+                    <ul class="bullet-list">
+                        <li>تم اطلاق الصندوق في فبراير 2024، بالشراكة مع شركة حصانة للاستثمار ودار الماجد العقارية ("الشركاء" أو "المستثمرين")، بغرض الاستحواذ على عدة مشاريع تطوير سكنية في جميع مدن المملكة بناء على معايير تم تحديدها من مدير الصندوق.</li>
+                        <li>تم جمع التزامات مالية بكامل رأس مال الصندوق المستهدف بمبلغ إجمالي 1,500 مليون ريال وتم الحصول على تسهيلات ائتمانية بمبلغ 1,500 مليون ريال يتم استخدامها حسب حاجة المشاريع.</li>
+                        <li>تم تقديم 5 مشاريع ("المشاريع المستهدفة") لمجلس إدارة الصندوق وتم الحصول على الموافقات اللازمة لإتمام الاستحواذات، وتم إتمام الاستحواذ على 3 من المشاريع المستهدفة والصندوق في صدد إتمام عمليات الاستحواذ المتبقية.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Financial Metrics Section -->
+        <div class="financial-stats">
+            <div class="stat-card" style="border-top: 5px solid #5a7d2a;">
+                <div class="stat-value" style="color: #5a7d2a;">3,000</div>
+                <div class="stat-unit">مليون ريال</div>
+                <div class="stat-label">إجمالي حجم الصندوق</div>
+            </div>
+            
+            <div class="stat-card" style="border-top: 5px solid #e74c3c;">
+                <div class="stat-value" style="color: #e74c3c;">1,500</div>
+                <div class="stat-unit">مليون ريال</div>
+                <div class="stat-label">رأس المال الملتزم به</div>
+            </div>
+            
+            <div class="stat-card" style="border-top: 5px solid #3498db;">
+                <div class="stat-value" style="color: #3498db;">1,500</div>
+                <div class="stat-unit">مليون ريال</div>
+                <div class="stat-label">التسهيلات الممنوحة</div>
+            </div>
+            
+            <div class="stat-card" style="border-top: 5px solid #9b59b6;">
+                <div class="stat-value" style="color: #9b59b6;">100</div>
+                <div class="stat-unit">مليون ريال</div>
+                <div class="stat-label">التسهيلات المستخدمة</div>
+            </div>
+        </div>
+        
+        <!-- Map & Chart Section -->
+        <h2>توزيع المشاريع</h2>
+        <div class="visual-section">
+            <div class="map-wrapper">
+                <img src="/api/placeholder/800/300" alt="خريطة المشاريع" class="map-image">
+                <div class="map-overlay">
+                    <div style="background-color: rgba(255,255,255,0.8); padding: 20px; border-radius: 8px; text-align: center;">
+                        <h3 style="margin-bottom: 10px; color: #333;">مواقع مشاريع الصندوق - الرياض</h3>
                     </div>
-                    
-                    <div class="item" onclick="openModal('إعداد خطة تنفيذية', 'إعداد خطة تنفيذية تفصيلية تشمل الجدول الزمني، مؤشرات الأداء، ومراحل التطبيق.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>إعداد الخطة</strong>
-                            <p>إعداد خطة تنفيذية تفصيلية تشمل الجدول الزمني، مؤشرات الأداء، ومراحل التطبيق</p>
-                        </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">المحفظة حسب المشروع</div>
+                <div class="donut-chart">
+                    <div class="donut-hole"></div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #3498db;"></div>
+                        <span>حطين</span>
                     </div>
-                    
-                    <div class="item" onclick="openModal('تحديد الاحتياجات', 'تحديد الاحتياجات المالية والتشغيلية.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>تحديد الاحتياجات</strong>
-                            <p>تحديد الاحتياجات المالية والتشغيلية للمبادرة</p>
-                        </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #e74c3c;"></div>
+                        <span>العليا</span>
                     </div>
-                    
-                    <div class="item" onclick="openModal('إطلاق المرحلة الأولى', 'إطلاق المرحلة الأولى من تنفيذ الاستراتيجية بما يتماشى مع أهداف الشركة الاستراتيجية.')">
-                        <div class="item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                        </div>
-                        <div class="item-content">
-                            <strong>إطلاق المرحلة الأولى</strong>
-                            <p>إطلاق المرحلة الأولى من تنفيذ الاستراتيجية بما يتماشى مع أهداف الشركة الاستراتيجية</p>
-                        </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #bdc3c7;"></div>
+                        <span>الخير</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #9b59b6;"></div>
+                        <span>الربيع</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="timeline">
-            <div class="timeline-circle">Q1 2025</div>
-            <div class="timeline-circle">Q2 2025</div>
-            <div class="timeline-circle">Q3 2025</div>
+        <div class="divider"></div>
+        
+        <!-- Projects Portfolio Section -->
+        <h2>محفظة المشاريع</h2>
+        <div class="projects-portfolio section">
+            <div class="section-header">تفاصيل المشاريع</div>
+            <div class="section-content">
+                <div class="table-wrapper">
+                    <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>المشروع</th>
+                                <th>الموقع</th>
+                                <th>الاستخدام</th>
+                                <th>مساحة الأرض</th>
+                                <th>اجمالي مساحة البناء</th>
+                                <th>الوضع الراهن</th>
+                                <th>تاريخ التسليم المتوقع</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="project-card">
+                                <td><strong>حطين</strong></td>
+                                <td>حي حطين، الرياض</td>
+                                <td>فلل/تاونهاوس</td>
+                                <td>14,712.6 متر مربع</td>
+                                <td>18,391 متر مربع</td>
+                                <td><span class="status-badge status-acquired">تم الاستحواذ</span></td>
+                                <td>الربع الرابع 2026</td>
+                            </tr>
+                            <tr class="project-card">
+                                <td><strong>العليا</strong></td>
+                                <td>حي الملك فهد، الرياض</td>
+                                <td>برج سكني</td>
+                                <td>3,250 متر مربع</td>
+                                <td>18,200 متر مربع</td>
+                                <td><span class="status-badge status-acquired">تم الاستحواذ</span></td>
+                                <td>الربع الثاني 2028</td>
+                            </tr>
+                            <tr class="project-card">
+                                <td><strong>الخير</strong></td>
+                                <td>حي العقيق، الرياض</td>
+                                <td>شقق سكنية</td>
+                                <td>12,000 متر مربع</td>
+                                <td>22,239 متر مربع</td>
+                                <td><span class="status-badge status-pending">لم يتم الاستحواذ بعد</span></td>
+                                <td>الربع الرابع 2026</td>
+                            </tr>
+                            <tr class="project-card">
+                                <td><strong>الربيع</strong></td>
+                                <td>حي الربيع، الرياض</td>
+                                <td>شقق سكنية</td>
+                                <td>7,279 متر مربع</td>
+                                <td>14,558 متر مربع</td>
+                                <td><span class="status-badge status-acquired">تم الاستحواذ</span></td>
+                                <td>الربع الرابع 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         
-        <div class="footnote">
-            <p>يشمل ذلك الأهداف، نطاق العمل، ومؤشرات الأداء المقترحة.</p>
+        <div class="divider"></div>
+        
+        <!-- Timeline Section -->
+        <h2>الجدول الزمني للمشاريع</h2>
+        <div class="section">
+            <div class="section-header">الإطار الزمني للتطوير والتسليم</div>
+            <div class="section-content">
+                <div class="timeline-container">
+                    <div class="timeline-header">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-year">2026</div>
+                        <div class="timeline-year">2027</div>
+                        <div class="timeline-year">2028</div>
+                    </div>
+                    
+                    <div class="timeline-bar">
+                        <div class="timeline-progress" style="left: 0; width: 60%; background-color: #3498db;">
+                            حطين
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-bar">
+                        <div class="timeline-progress" style="left: 20%; width: 80%; background-color: #e74c3c;">
+                            العليا
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-bar">
+                        <div class="timeline-progress" style="left: 10%; width: 60%; background-color: #bdc3c7;">
+                            الخير
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-bar">
+                        <div class="timeline-progress" style="left: 15%; width: 55%; background-color: #9b59b6;">
+                            الربيع
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 class="modal-title" id="modalTitle"></h3>
-            <p class="modal-desc" id="modalDesc"></p>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
-  <script>
-    function openModal(title, desc) {
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalDesc').textContent = desc;
-    document.getElementById('infoModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('infoModal').style.display = 'none';
-}
-
-// Close modal when clicking outside of it
-window.onclick = function(event) {
-    if (event.target == document.getElementById('infoModal')) {
-        closeModal();
-    }
-}
-  </script>
 </body>
 </html>
