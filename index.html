@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استراتيجية تجربة العميل</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #c0b283;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #373737;
+}
+
+.header-img {
+    width: 80px;
+    height: 40px;
+    background-color: #dfd5a5;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #373737;
+}
+
+.intro {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/api/placeholder/200/200') no-repeat;
+    background-position: left;
+    background-size: contain;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 1;
+}
+
+.sections {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.section {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #373737;
+    border-bottom: 2px solid #c0b283;
+    padding-bottom: 10px;
+}
+
+.progress-items, .next-steps-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.item-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #c0b283;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.item-content {
+    font-size: 14px;
+}
+
+.footnote {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal-title {
+    margin-bottom: 20px;
+    color: #373737;
+    text-align: center;
+    border-bottom: 2px solid #c0b283;
+    padding-bottom: 10px;
+}
+
+.modal-desc {
+    text-align: justify;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    position: relative;
+}
+
+.timeline-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #c0b283;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    margin: 0 20px;
+    z-index: 2;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    height: 5px;
+    background-color: #c0b283;
+    width: 80%;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column;
+    }
+    
+    .progress-items, .next-steps-items {
+        grid-template-columns: 1fr;
+    }
+}
+  </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">مكتب إدارة المشاريع والاستراتيجية</div>
+            <div class="header-img"></div>
+        </header>
+        
+        <h1>استراتيجية تجربة العميل</h1>
+        
+        <div class="intro">
+            <div class="intro-content">
+                <p>تماشيًا مع رؤية الشركة لتعزيز تجربة العميل وتحقيق مستويات أعلى من رضا العملاء، تم توجيه العمل على إعداد استراتيجية متكاملة لتجربة العميل كجزء من التحول الاستراتيجي للشركة. تهدف هذه المبادرة إلى تطوير رحلة العميل، تعزيز الحوكمة، وتوظيف الأدوات التقنية لقياس الأداء وتحسين جودة الخدمات المقدمة.</p>
+            </div>
+        </div>
+        
+        <div class="sections">
+            <div class="section">
+                <h2>أبرز التقدمات الحالية</h2>
+                <div class="progress-items">
+                    <div class="item" onclick="openModal('تم اعتماد توجه استراتيجي', 'تم اعتماد توجه استراتيجي لتطوير تجربة العميل كمبادرة ذات أولوية في الشركة.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>التوجيه الاستراتيجي</strong>
+                            <p>تم اعتماد توجه استراتيجي لتطوير تجربة العميل كمبادرة ذات أولوية في الشركة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('التواصل مع جمعية تجربة العميل', 'تم التواصل مع جمعية تجربة العميل لتعزيز العرض الفني وعكس أفضل الممارسات.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>التواصل مع مقدمي الخدمة</strong>
+                            <p>تم التواصل مع جمعية تجربة العميل لتعزيز العرض الفني وعكس أفضل الممارسات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('تقديم العرض الفني', 'تم تقديم العرض الفني وجاري مراجعته من قبل الإدارات المعنية.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>مراجعة العرض الفني</strong>
+                            <p>تم تقديم العرض الفني وجاري مراجعته من قبل الإدارات المعنية</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('العمل على التفاوض', 'جارٍ العمل على التفاوض مع مزودي الخدمات لتقديم العروض الفنية والمالية الخاصة بتنفيذ المبادرة.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>التواصل مع مزودي الخدمات</strong>
+                            <p>جارٍ العمل على التفاوض مع مزودي الخدمات لتقديم العروض الفنية والمالية الخاصة بتنفيذ المبادرة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>الخطوات القادمة</h2>
+                <div class="next-steps-items">
+                    <div class="item" onclick="openModal('استكمال دراسة العروض', 'استكمال دراسة العروض الفنية والمالية بنهاية شهر فبراير 2025 وذلك لاختيار مزود الخدمة المناسب.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>استكمال الدراسة</strong>
+                            <p>استكمال دراسة العروض الفنية والمالية بنهاية شهر فبراير 2025 لاختيار مزود الخدمة المناسب</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('إعداد خطة تنفيذية', 'إعداد خطة تنفيذية تفصيلية تشمل الجدول الزمني، مؤشرات الأداء، ومراحل التطبيق.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>إعداد الخطة</strong>
+                            <p>إعداد خطة تنفيذية تفصيلية تشمل الجدول الزمني، مؤشرات الأداء، ومراحل التطبيق</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('تحديد الاحتياجات', 'تحديد الاحتياجات المالية والتشغيلية.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>تحديد الاحتياجات</strong>
+                            <p>تحديد الاحتياجات المالية والتشغيلية للمبادرة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="item" onclick="openModal('إطلاق المرحلة الأولى', 'إطلاق المرحلة الأولى من تنفيذ الاستراتيجية بما يتماشى مع أهداف الشركة الاستراتيجية.')">
+                        <div class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                        </div>
+                        <div class="item-content">
+                            <strong>إطلاق المرحلة الأولى</strong>
+                            <p>إطلاق المرحلة الأولى من تنفيذ الاستراتيجية بما يتماشى مع أهداف الشركة الاستراتيجية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-circle">Q1 2025</div>
+            <div class="timeline-circle">Q2 2025</div>
+            <div class="timeline-circle">Q3 2025</div>
+        </div>
+        
+        <div class="footnote">
+            <p>يشمل ذلك الأهداف، نطاق العمل، ومؤشرات الأداء المقترحة.</p>
+        </div>
+    </div>
+    
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-desc" id="modalDesc"></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+  <script>
+    function openModal(title, desc) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDesc').textContent = desc;
+    document.getElementById('infoModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('infoModal').style.display = 'none';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    if (event.target == document.getElementById('infoModal')) {
+        closeModal();
+    }
+}
+  </script>
+</body>
+</html>
