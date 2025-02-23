@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقارنة أداء الشركات</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+        :root {
+            --color-beige: #c0b283;
+            --color-light-beige: #dfd5a5;
+            --color-brown: #916e45;
+            --color-olive: #5a5f27;
+            --color-bg: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chart-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            color: var(--color-olive);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 400px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chart-container">
+            <h2 class="chart-title">الإيرادات وصافي الربح (مليون ريال سعودي)</h2>
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">العائد على حقوق الملكية والأصول (%)</h2>
+            <canvas id="returnsChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">إجمالي الأصول (مليون ريال سعودي)</h2>
+            <canvas id="assetsChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            companies: ['الماجدية', 'رتال', 'سمو', 'لدن'],
+            revenue: [1007.3, 1434.7, 317.6, 97.1],
+            netProfit: [223.3, 181.4, 83.0, 48.6],
+            totalAssets: [2764.9, 3976.0, 1762.0, 2842.0],
+            roe: [27.7, 24.3, 14.3, 5.3],
+            roa: [8.1, 4.7, 7.1, 1.9]
+        };
+
+        const formatNumber = (number) => {
+            return new Intl.NumberFormat('ar-SA').format(number);
+        };
+
+        // Revenue and Net Profit Chart
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'bar',
+            data: {
+                labels: data.companies,
+                datasets: [
+                    {
+                        label: 'الإيرادات',
+                        data: data.revenue,
+                        backgroundColor: '#c0b283',
+                    },
+                    {
+                        label: 'صافي الربح',
+                        data: data.netProfit,
+                        backgroundColor: '#916e45',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${formatNumber(context.raw)} مليون ر.س`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Returns Chart
+        new Chart(document.getElementById('returnsChart'), {
+            type: 'bar',
+            data: {
+                labels: data.companies,
+                datasets: [
+                    {
+                        label: 'العائد على حقوق الملكية',
+                        data: data.roe,
+                        backgroundColor: '#dfd5a5',
+                    },
+                    {
+                        label: 'العائد على الأصول',
+                        data: data.roa,
+                        backgroundColor: '#5a5f27',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Total Assets Chart
+        new Chart(document.getElementById('assetsChart'), {
+            type: 'bar',
+            data: {
+                labels: data.companies,
+                datasets: [{
+                    label: 'إجمالي الأصول',
+                    data: data.totalAssets,
+                    backgroundColor: '#c0b283',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${formatNumber(context.raw)} مليون ر.س`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
