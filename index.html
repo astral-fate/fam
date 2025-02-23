@@ -3,193 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مقارنة أداء الشركات</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <title>Project Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+      body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
 
-        :root {
-            --color-beige: #c0b283;
-            --color-light-beige: #dfd5a5;
-            --color-brown: #916e45;
-            --color-olive: #5a5f27;
-            --color-bg: #f5f5f5;
-        }
+.p-6 {
+    padding: 1.5rem;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
+.bg-gray-50 {
+    background-color: #f9fafb;
+}
 
-        body {
-            background-color: var(--color-bg);
-            padding: 2rem;
-        }
+.min-h-screen {
+    min-height: 100vh;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.grid {
+    display: grid;
+}
 
-        .chart-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.grid-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
 
-        .chart-title {
-            color: var(--color-olive);
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
 
-        canvas {
-            width: 100% !important;
-            height: 400px !important;
-        }
+.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card.small {
+    padding: 0.5rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-amber-600 {
+    color: #d97706;
+}
+
+.text-gray-600 {
+    color: #4b5563;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.bg-green-100 {
+    background-color: #dcfce7;
+}
+
+.text-green-800 {
+    color: #166534;
+}
+
+.bg-blue-100 {
+    background-color: #dbeafe;
+}
+
+.text-blue-800 {
+    color: #1e40af;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.bg-gray-50 {
+    background-color: #f9fafb;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-blue-600 {
+    color: #2563eb;
+}
+
+.text-green-600 {
+    color: #16a34a;
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="chart-container">
-            <h2 class="chart-title">الإيرادات وصافي الربح (مليون ريال سعودي)</h2>
-            <canvas id="revenueChart"></canvas>
+    <div class="p-6 bg-gray-50 min-h-screen">
+        <!-- Header Summary -->
+        <div class="grid grid-cols-5 gap-4 mb-8 text-center">
+            <div class="stat-card">
+                <i data-lucide="building-2" class="text-gray-600 mb-2"></i>
+                <div class="font-bold text-lg mb-1">الأبراج</div>
+                <div class="text-2xl font-bold text-amber-600">4</div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="building" class="text-gray-600 mb-2"></i>
+                <div class="font-bold text-lg mb-1">المباني</div>
+                <div class="text-2xl font-bold text-amber-600">324</div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="home" class="text-gray-600 mb-2"></i>
+                <div class="font-bold text-lg mb-1">إجمالي الوحدات</div>
+                <div class="text-2xl font-bold text-amber-600">4968</div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="file-text" class="text-gray-600 mb-2"></i>
+                <div class="font-bold text-lg mb-1">المكاتب</div>
+                <div class="text-2xl font-bold text-amber-600">36750 م2</div>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+                <div class="stat-card small">
+                    <i data-lucide="building" class="text-gray-600 mb-2"></i>
+                    <div class="font-bold text-sm mb-1">الشقق</div>
+                    <div class="text-lg font-bold text-amber-600">3958</div>
+                </div>
+                <div class="stat-card small">
+                    <i data-lucide="home" class="text-gray-600 mb-2"></i>
+                    <div class="font-bold text-sm mb-1">تاون هاوس</div>
+                    <div class="text-lg font-bold text-amber-600">418</div>
+                </div>
+                <div class="stat-card small">
+                    <i data-lucide="home" class="text-gray-600 mb-2"></i>
+                    <div class="font-bold text-sm mb-1">فيلا</div>
+                    <div class="text-lg font-bold text-amber-600">568</div>
+                </div>
+                <div class="stat-card small">
+                    <i data-lucide="home" class="text-gray-600 mb-2"></i>
+                    <div class="font-bold text-sm mb-1">شاليهات</div>
+                    <div class="text-lg font-bold text-amber-600">24</div>
+                </div>
+            </div>
         </div>
 
-        <div class="chart-container">
-            <h2 class="chart-title">العائد على حقوق الملكية والأصول (%)</h2>
-            <canvas id="returnsChart"></canvas>
-        </div>
+        <!-- Project Phases -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+            <!-- Planning & Design -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">التخطيط والتصميم</h3>
+                    <span class="text-2xl font-bold text-amber-600">11</span>
+                </div>
+                <div class="mb-4">
+                    <div class="text-sm text-gray-600 mb-2">SPI = 1.08</div>
+                    <div class="bg-green-100 text-green-800 text-sm p-2 rounded">
+                        إضافة مشروعين بنية تحتية الأموات 107000م والنرجس 406000م
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="building-2" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">الأبراج</div>
+                            <div class="font-bold">1</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="building" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">المباني</div>
+                            <div class="font-bold">136</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="home" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">إجمالي الوحدات</div>
+                            <div class="font-bold">2262</div>
+                        </div>
+                    </div>
+                    <div class="col-span-2 grid grid-cols-4 gap-2">
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">الشقق</div>
+                            <div class="font-bold">1660</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">تاون هاوس</div>
+                            <div class="font-bold">96</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">فيلا</div>
+                            <div class="font-bold">506</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="chart-container">
-            <h2 class="chart-title">إجمالي الأصول (مليون ريال سعودي)</h2>
-            <canvas id="assetsChart"></canvas>
+            <!-- Execution -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">التنفيذ</h3>
+                    <span class="text-2xl font-bold text-amber-600">30</span>
+                </div>
+                <div class="mb-4">
+                    <div class="flex gap-4 mb-2">
+                        <div class="text-sm text-gray-600">SPI = 1.02</div>
+                        <div class="text-sm text-gray-600">CPI = 0.92</div>
+                    </div>
+                    <div class="bg-blue-100 text-blue-800 text-sm p-2 rounded">
+                        بدء مشروع مكتب المبيعات صدور رخصة البناء لمشروع حطين 178
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="building-2" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">الأبراج</div>
+                            <div class="font-bold">3</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="building" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">المباني</div>
+                            <div class="font-bold">188</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="home" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">إجمالي الوحدات</div>
+                            <div class="font-bold">2706</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="file-text" class="text-gray-600"></i>
+                        <div>
+                            <div class="text-sm text-gray-600">المكاتب</div>
+                            <div class="font-bold">36750 م2</div>
+                        </div>
+                    </div>
+                    <div class="col-span-2 grid grid-cols-4 gap-2">
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">الشقق</div>
+                            <div class="font-bold">2298</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">تاون هاوس</div>
+                            <div class="font-bold">322</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">فيلا</div>
+                            <div class="font-bold">62</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-600">شاليهات</div>
+                            <div class="font-bold">24</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">الإغلاق</h3>
+                    <span class="text-2xl font-bold text-amber-600">14</span>
+                </div>
+                <div class="mb-4">
+                    <div class="bg-blue-100 text-blue-800 text-sm p-2 rounded">
+                        طرح مشروع خيالا 1 للبيع بواقع 528 وحدة
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="text-sm text-gray-600 mb-2">الوحدات المباعة 2025</h4>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="text-green-600"></i>
+                            <span class="text-xl font-bold">372</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="text-sm text-gray-600 mb-2">الوحدات المتاحة</h4>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl font-bold">789</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="text-sm text-gray-600 mb-2">متبقي التسليم</h4>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="users" class="text-blue-600"></i>
+                            <span class="text-xl font-bold">240</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="text-sm text-gray-600 mb-2">متبقي الإفراغ</h4>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="file-text" class="text-blue-600"></i>
+                            <span class="text-xl font-bold">166</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.min.js"></script>
     <script>
-        const data = {
-            companies: ['الماجدية', 'رتال', 'سمو', 'لدن'],
-            revenue: [1007.3, 1434.7, 317.6, 97.1],
-            netProfit: [223.3, 181.4, 83.0, 48.6],
-            totalAssets: [2764.9, 3976.0, 1762.0, 2842.0],
-            roe: [27.7, 24.3, 14.3, 5.3],
-            roa: [8.1, 4.7, 7.1, 1.9]
-        };
-
-        const formatNumber = (number) => {
-            return new Intl.NumberFormat('ar-SA').format(number);
-        };
-
-        // Revenue and Net Profit Chart
-        new Chart(document.getElementById('revenueChart'), {
-            type: 'bar',
-            data: {
-                labels: data.companies,
-                datasets: [
-                    {
-                        label: 'الإيرادات',
-                        data: data.revenue,
-                        backgroundColor: '#c0b283',
-                    },
-                    {
-                        label: 'صافي الربح',
-                        data: data.netProfit,
-                        backgroundColor: '#916e45',
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${formatNumber(context.raw)} مليون ر.س`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Returns Chart
-        new Chart(document.getElementById('returnsChart'), {
-            type: 'bar',
-            data: {
-                labels: data.companies,
-                datasets: [
-                    {
-                        label: 'العائد على حقوق الملكية',
-                        data: data.roe,
-                        backgroundColor: '#dfd5a5',
-                    },
-                    {
-                        label: 'العائد على الأصول',
-                        data: data.roa,
-                        backgroundColor: '#5a5f27',
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${context.raw}%`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Total Assets Chart
-        new Chart(document.getElementById('assetsChart'), {
-            type: 'bar',
-            data: {
-                labels: data.companies,
-                datasets: [{
-                    label: 'إجمالي الأصول',
-                    data: data.totalAssets,
-                    backgroundColor: '#c0b283',
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${formatNumber(context.raw)} مليون ر.س`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        lucide.createIcons();
     </script>
 </body>
 </html>
